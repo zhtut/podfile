@@ -1,0 +1,2 @@
+PyYAML~=6.0
+setuptools~=65.3.0
