@@ -1,0 +1,25 @@
+---
+target_definitions:
+- abstract: true
+  children:
+  - dependencies:
+    - AFNetworking:
+      - {}
+    - Alamofire:
+      - 5.6.1
+    name: PodfileExample
+    platform:
+      ios: '13.0'
+    use_modular_headers:
+      for_pods:
+      - AFNetworking
+  inhibit_warnings:
+    all: true
+  name: Pods
+  platform:
+    ios: '9.0'
+  use_modular_headers:
+    all: true
+  uses_frameworks:
+    :linkage: :dynamic
+    :packaging: :framework
