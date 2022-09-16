@@ -11,6 +11,7 @@ class Podfile:
         self.installation_method = InstallationMethod()
         self.target_definitions = []
         self.sources = []
+        self.plugins = {}
 
         self.podfile_path = podfile_path
 
@@ -22,7 +23,9 @@ class Podfile:
         target_definitions: list = self.podfile_info.get("target_definitions")
         self.target_definitions = [TargetDefinition(info) for info in target_definitions]
 
-        self.sources = self.podfile_info.get("sources")
+        self.sources: list = self.podfile_info.get("sources")
+
+        self.plugins: dict = self.podfile_info.get("plugins")
 
         # 解析install的方法
         installation_method: dict = self.podfile_info.get("installation_method")
@@ -38,8 +41,11 @@ class Podfile:
 
     def to_hash(self):
         podfile_info = {}
-        if self.sources:
+        if len(self.sources) > 0:
             podfile_info["sources"] = self.sources
+        if len(self.plugins) > 0:
+            podfile_info["plugins"] = self.plugins
+
         target_definitions = [definition.to_hash() for definition in self.target_definitions]
         podfile_info["target_definitions"] = target_definitions
         if self.installation_method:
