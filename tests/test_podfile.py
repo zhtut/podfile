@@ -2,9 +2,9 @@ import os
 import subprocess
 from unittest import TestCase
 
-from podfile.podfile import Podfile
+from podfile.yaml_podfile import YamlPodfile
 from podfile.module import Module
-from podfile.target import Target
+from podfile.yaml_target import YamlTarget
 
 
 class TestPodfile(TestCase):
@@ -22,7 +22,7 @@ class TestPodfile(TestCase):
         with open(yaml_path, "w") as w:
             w.write(yaml_content)
         os.system(f'mv {yaml_path} {origin_yaml}')
-        podfile_obj = Podfile(podfile_path)
+        podfile_obj = YamlPodfile(podfile_path)
         podfile_obj.dump_yaml()
 
     def test_add_module(self):
@@ -30,8 +30,8 @@ class TestPodfile(TestCase):
         yaml_path = "PodfileExample/CocoaPods.podfile.yaml"
         if os.path.exists(yaml_path):
             os.remove(yaml_path)
-        podfile_obj = Podfile(podfile_path)
-        tar: Target = podfile_obj.target_with_name("PodfileExample")
+        podfile_obj = YamlPodfile(podfile_path)
+        tar: YamlTarget = podfile_obj.target_with_name("PodfileExample")
         new_module = Module()
         new_module.name = "Alamofire"
         new_module.tag = "5.6.1"

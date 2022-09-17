@@ -1,5 +1,5 @@
 from podfile.common import Common
-from podfile.target import Target
+from podfile.yaml_target import YamlTarget
 
 
 class TargetDefinition(Common):
@@ -16,7 +16,7 @@ class TargetDefinition(Common):
             children_objs = []
             if children:
                 for child_info in children:
-                    target = Target(child_info)
+                    target = YamlTarget(child_info)
                     children_objs.append(target)
             self.children = children_objs
 

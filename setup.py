@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 
 with open(
-    os.path.join(os.path.dirname(__file__), "requirements/common.txt"), "r"
+        os.path.join(os.path.dirname(__file__), "requirements/common.txt"), "r"
 ) as fh:
     requirements = fh.readlines()
 
@@ -36,7 +36,7 @@ setup(
     url=URL,
     keywords=["ios", "python", "cocoapods", "podfile"],
     install_requires=[req for req in requirements],
-    packages=find_packages(exclude=("tests",)),
+    packages=find_packages(exclude=("tests",), include=("podfile", "yaml_podfile", "common")),
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
