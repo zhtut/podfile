@@ -2,9 +2,9 @@ import os
 import subprocess
 from unittest import TestCase
 
-from podfile.yaml_podfile import YamlPodfile
-from podfile.module import Module
-from podfile.yaml_target import YamlTarget
+from yaml_podfile.yaml_podfile import YamlPodfile
+from common.module import Module
+from yaml_podfile.yaml_target import YamlTarget
 
 
 class TestPodfile(TestCase):
