@@ -1,4 +1,4 @@
-from podfile import util
+from common.util import *
 
 
 class Hash:
@@ -105,7 +105,7 @@ class Common:
         if self.uses_frameworks:
             uses_frameworks_dict = self.uses_frameworks.to_hash()
             if len(uses_frameworks_dict) > 0:
-                ret_hash["uses_frameworks"] = util.process_pod_keys(uses_frameworks_dict)
+                ret_hash["uses_frameworks"] = process_pod_keys(uses_frameworks_dict)
         if self.inhibit_warnings:
             ret_hash["inhibit_warnings"] = {"all": True}
         if self.use_modular_headers:

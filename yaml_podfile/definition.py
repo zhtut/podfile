@@ -1,5 +1,5 @@
-from podfile.common import Common
-from podfile.yaml_target import YamlTarget
+from yaml_podfile.common import Common
+from yaml_podfile.yaml_target import YamlTarget
 
 
 class TargetDefinition(Common):

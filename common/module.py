@@ -43,3 +43,17 @@ class Module:
         module_info = util.process_pod_keys(module_info)
         hash_info = {self.name: [module_info]}
         return hash_info
+
+    @property
+    def pod_str(self):
+        pod_str = f"  pod '{self.name}'"
+        if self.git:
+            pod_str += f", :git => '{self.git}'"
+            if self.tag:
+                pod_str += f", :tag => '{self.tag}'"
+            elif self.branch:
+                pod_str += f", :branch => '{self.branch}'"
+        else:
+            if self.tag:
+                pod_str += f", '{self.tag}'"
+        return pod_str

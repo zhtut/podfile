@@ -2,10 +2,9 @@ import json
 import os.path
 import subprocess
 import yaml
-from podfile.install import InstallationMethod
-from podfile.definition import TargetDefinition
-from podfile.yaml_target import YamlTarget
-from podfile.module import Module
+from yaml_podfile.install import InstallationMethod
+from yaml_podfile.definition import TargetDefinition
+from yaml_podfile.yaml_target import YamlTarget
 
 
 class YamlPodfile:
@@ -15,12 +14,16 @@ class YamlPodfile:
     """
 
     def __init__(self, podfile_path: str):
+        if podfile_path is None:
+            raise Exception("podfile变量为空")
+        if not os.path.exists(podfile_path):
+            raise Exception(f"podfile不存在：{podfile_path}")
+
+        self.podfile_path = podfile_path
         self.installation_method = InstallationMethod()
         self.target_definitions = []
         self.sources = []
         self.plugins = {}
-
-        self.podfile_path = podfile_path
 
         podfile_json = subprocess.getoutput(f"pod ipc podfile-json {podfile_path}")
         print(f"podfile_json:{podfile_json}")
@@ -81,5 +84,3 @@ class YamlPodfile:
     def remove_source(self, source: str):
         if source in self.sources:
             self.sources.remove(source)
-
-
