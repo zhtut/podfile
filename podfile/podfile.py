@@ -7,6 +7,7 @@ from podfile.yaml_podfile import YamlPodfile
 class Podfile:
     podfile_path: str = None
     yaml_podfile: YamlPodfile = None
+    sources: [] = None
 
     def __init__(self, podfile_path: str):
         self.podfile_path = podfile_path
@@ -18,10 +19,15 @@ class Podfile:
         yaml_podfile = YamlPodfile(podfile_path)
         self.yaml_podfile = yaml_podfile
 
+        self.sources = self.yaml_podfile.sources
+
     def add_source(self, source: str):
         file = File(self.podfile_path)
+        content = file.content
+        if source in content:
+            pass
         source_text = f"source '{source}'"
-        if file.content.find("source") != -1:
+        if content.find("source") != -1:
             file.add_text(source_text, search="source ")
         else:
             file.insert_line(source_text)
