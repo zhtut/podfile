@@ -20,7 +20,7 @@ with open("README.md", "r") as fh:
 root = os.path.abspath(os.path.dirname(__file__))
 
 if not VERSION:
-    with open(os.path.join(root, "podfile", "__version__.py")) as f:
+    with open(os.path.join(root, "__version__.py")) as f:
         exec(f.read(), about)
 else:
     about["__version__"] = VERSION
