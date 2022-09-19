@@ -20,7 +20,7 @@ with open("README.md", "r") as fh:
 root = os.path.abspath(os.path.dirname(__file__))
 
 if not VERSION:
-    with open(os.path.join(root, "__version__.py")) as f:
+    with open(os.path.join(root, "podfile/__version__.py")) as f:
         exec(f.read(), about)
 else:
     about["__version__"] = VERSION
@@ -36,7 +36,7 @@ setup(
     url=URL,
     keywords=["ios", "python", "cocoapods", "podfile"],
     install_requires=[req for req in requirements],
-    packages=find_packages(exclude=("tests",), include=("podfile", "yaml_podfile", "common")),
+    packages=find_packages(exclude=("tests",), include="podfile"),
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",

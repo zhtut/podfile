@@ -2,9 +2,9 @@ import json
 import os.path
 import subprocess
 import yaml
-from yaml_podfile.install import InstallationMethod
-from yaml_podfile.definition import TargetDefinition
-from yaml_podfile.yaml_target import YamlTarget
+from podfile.install import InstallationMethod
+from podfile.definition import TargetDefinition
+from podfile.yaml_target import YamlTarget
 
 
 class YamlPodfile:

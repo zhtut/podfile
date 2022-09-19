@@ -1,10 +1,10 @@
 import os
 import subprocess
 from unittest import TestCase
-
-from yaml_podfile.yaml_podfile import YamlPodfile
-from common.module import Module
-from yaml_podfile.yaml_target import YamlTarget
+from podfile.podfile import Podfile
+from podfile.yaml_podfile import YamlPodfile
+from podfile.module import Module
+from podfile.yaml_target import YamlTarget
 
 
 class TestPodfile(TestCase):
@@ -38,3 +38,12 @@ class TestPodfile(TestCase):
         tar.add_module(new_module)
         tar.platform.ios = "13.0"
         podfile_obj.dump_yaml()
+
+    def test_edit_profile(self):
+        podfile_path = "PodfileExample/Podfile"
+        podfile = Podfile(podfile_path)
+        new_module = Module()
+        new_module.name = "Alamofire"
+        new_module.tag = "5.6.1-d"
+        podfile.add_module_for_target(new_module, "PodfileExample")
+        podfile.add_source("@gitlib.zwcins.com/ios.library/sepc.git")

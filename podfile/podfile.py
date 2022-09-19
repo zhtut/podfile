@@ -1,8 +1,7 @@
 import os.path
-from common.file import *
-from common.module import Module
-from yaml_podfile.yaml_podfile import YamlPodfile
-from yaml_podfile.yaml_target import YamlTarget
+from podfile.file import *
+from podfile.module import Module
+from podfile.yaml_podfile import YamlPodfile
 
 
 class Podfile:
@@ -22,7 +21,7 @@ class Podfile:
     def add_source(self, source: str):
         file = File(self.podfile_path)
         source_text = f"source '{source}'"
-        if file.read_handler.read().find("source") != -1:
+        if file.content.find("source") != -1:
             file.add_text(source_text, search="source ")
         else:
             file.insert_line(source_text)
@@ -43,4 +42,4 @@ class Podfile:
         if contain:
             file.process_str(module.name, pod_str, False, FileAction.replace)
         else:
-            file.add_line_to_suffix(pod_str, f"target '{target_name}'")
+            file.add_line_to_suffix(pod_str + '\n', f"target '{target_name}'")

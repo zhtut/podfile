@@ -1,17 +1,17 @@
-from common.module import Module
-from yaml_podfile.common import Common
+from podfile.module import Module
+from podfile.common import Common
 
 
 class YamlTarget(Common):
     name: str = None
-    dependencies: list(Module) = None
+    dependencies: list() = None
 
     def __init__(self, target_info: dict = None):
         if not target_info:
             return
         super().parse_properties(target_info)
         self.name = target_info.get("name")
-        dependencies = list(Module)
+        dependencies = list()
         use_modular_headers: dict = target_info.get("use_modular_headers")
         for_pods = list()
         if use_modular_headers:

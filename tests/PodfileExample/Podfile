@@ -1,4 +1,4 @@
-# Uncomment the next line to define a global platform for your project
+source '@gitlib.zwcins.com/ios.library/sepc.git'# Uncomment the next line to define a global platform for your project
 
 platform :ios, '9.0'
 use_frameworks!
@@ -25,8 +25,7 @@ post_install do |installer|
 end
 
 target 'PodfileExample' do
-  # Comment the next line if you don't want to use dynamic frameworks
-
+  pod 'Alamofire', '5.6.1-d'
   # Pods for PodfileExample
     pod 'AFNetworking', '4.0.1'
 

@@ -1,5 +1,5 @@
 import unittest
-from common.file import File
+from podfile.file import File
 
 
 class MyTestCase(unittest.TestCase):
