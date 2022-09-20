@@ -26,7 +26,6 @@ class YamlPodfile:
         self.plugins = {}
 
         podfile_json = subprocess.getoutput(f"pod ipc podfile-json {podfile_path}")
-        print(f"podfile_json:{podfile_json}")
         podfile_info = json.loads(podfile_json)
         self.podfile_info = podfile_info
 
