@@ -28,7 +28,7 @@ class Podfile:
             pass
         source_text = f"source '{source}'"
         if content.find("source") != -1:
-            file.add_string_to_prefix(source_text, "source ")
+            file.add_string_to_prefix(source_text + "\n", "source ", once=True)
         else:
             file.insert_line(source_text)
 
@@ -46,6 +46,6 @@ class Podfile:
                 break
         file = File(self.podfile_path)
         if contain:
-            file.process_str(module.name, pod_str, False, FileAction.replace)
+            file.process_str(module.name, pod_str + '\n', False, FileAction.replace)
         else:
             file.add_line_to_suffix(pod_str + '\n', f"target '{target_name}'")
