@@ -53,7 +53,9 @@ class Module:
                 pod_str += f", :tag => '{self.tag}'"
             elif self.branch:
                 pod_str += f", :branch => '{self.branch}'"
-        else:
-            if self.tag:
-                pod_str += f", '{self.tag}'"
+        elif self.path:
+            pod_str += f", :path => '{self.path}'"
+        elif self.tag:
+            pod_str += f", '{self.tag}'"
+
         return pod_str
