@@ -28,7 +28,7 @@ class Podfile:
             pass
         source_text = f"source '{source}'"
         if content.find("source") != -1:
-            file.add_string_to_prefix(source_text, search="source ")
+            file.add_string_to_prefix(source_text, "source ")
         else:
             file.insert_line(source_text)
 
