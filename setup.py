@@ -36,7 +36,7 @@ setup(
     url=URL,
     keywords=["ios", "python", "cocoapods", "podfile"],
     install_requires=[req for req in requirements],
-    packages=find_packages(exclude=("tests",), include="podfile"),
+    packages=find_packages(exclude=("tests",)),
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
